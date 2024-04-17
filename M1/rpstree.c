@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
-#include <dirent.h>
 #include <stdlib.h>    // EXIT_SUCCESS
-#include "include/utils.h"
 #include "include/output.h"
 #include "include/processtree.h"
 
@@ -12,36 +10,6 @@ typedef struct {
     int parentPID;
     char name[40];
 } Process;
-
-void test() {
-    DIR *proc_dir;    // the pointer of the directory input stream.
-    struct dirent *entry; // used for the struct of the category.
-    proc_dir = opendir("/proc");
-    if (proc_dir == NULL) {
-        perror("Failed to open /proc directory");
-        return;
-    }
-    while ((entry = readdir(proc_dir)) != NULL) {
-        if (is_numeric(entry->d_name)) {
-            char *endPtr;
-            char destination[50] = "";
-            char content[1024] = "";
-            int pid = (int) strtol(entry->d_name, &endPtr, 10);
-            int ppid = get_parent_pid(pid);
-            // concat the path of the process.
-            strcat(destination, "/proc/");
-            strcat(destination, entry->d_name);
-            strcat(destination, "/comm");
-
-            read_files(destination, content);
-
-            printf("pid:%d ", pid);
-            printf("ppid:%d ", ppid);
-            printf("%s\n", content);
-        }
-    }
-    closedir(proc_dir);
-}
 
 int main(int argc, char *argv[]) {
     int help = 0, version = 0;
@@ -59,7 +27,17 @@ int main(int argc, char *argv[]) {
         print_help();
         return EXIT_SUCCESS;
     }
+
     // Process pcs[1024];
-    test();
+    setbuf(stdout, NULL);
+
+    processTree *pcs = malloc(sizeof(processTree));
+    if (pcs == NULL) { // None
+        fprintf(stderr, "Memory allocation failed. \n");
+        return EXIT_FAILURE;
+    }
+    init_process_tree(pcs);
+    init_tree(pcs);
+    print_tree(pcs->head);
     return EXIT_SUCCESS;
 }

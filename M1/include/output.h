@@ -6,9 +6,12 @@
 #define OUTPUT_H
 
 #include <stdio.h>
+#include "processtree.h"
 
 void print_version();
 
 void print_help();
+
+void print_tree(processNode *ptr);
 
 #endif //OUTPUT_H

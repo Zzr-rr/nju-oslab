@@ -15,3 +15,13 @@ void print_help() {
     printf(" -h, --help\t\tdisplay help information\n");
     printf(" -p, --show-pids\tshow PIDs; implies -c\n");
 }
+
+void print_tree(processNode *ptr) {
+    if (ptr == NULL) return;
+    printf("pid: %d ", ptr->pid);
+    printf("ppid: %d ", ptr->ppid);
+    printf("name: %s ", ptr->name);
+    for (int i = 0; i < ptr->numChildren; ++i) {
+        print_tree(ptr->children[i]);
+    }
+}
