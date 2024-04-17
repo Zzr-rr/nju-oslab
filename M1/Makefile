@@ -1,5 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
+VALFLAGS = --tool=memcheck --leak-check=full
 INCLUDES = includes/
 SRC = src/
 
@@ -15,6 +16,9 @@ output.o:
 
 rpstree.o:
 	${CC} ${CFLAGS} -c rpstree.c
+
+check: rpstree clean
+	valgrind ${VALFLAGS} ./rpstree
 
 clean:
 	rm -rf rpstree.o utils.o processtree.o output.o

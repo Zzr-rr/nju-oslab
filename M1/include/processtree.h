@@ -22,9 +22,14 @@ typedef struct processTree_t {
     processNode *head;
 } processTree;
 
-void init_process_node(processNode *ptr, const char *name, int pid, int ppid);
+void init_process_node(processNode *ptr, const char *name, int pid, int ppid, processNode *parent);
 
 void init_process_tree(processTree *ptr);
+
+void destroy_process_node(processNode *node);
+
+void destroy_process_tree(processTree *tree);
+
 
 void make_tree(processNode *ptr, processNode *pcr, int sz);
 

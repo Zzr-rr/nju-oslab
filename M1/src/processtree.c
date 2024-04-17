@@ -1,11 +1,11 @@
 #include "../include/processtree.h"
 
-void init_process_node(processNode *ptr, const char *name, int pid, int ppid) {
+void init_process_node(processNode *ptr, const char *name, int pid, int ppid, processNode *parent) {
     assert(ptr != NULL);
     ptr->name = strdup(name);
     ptr->pid = pid;
     ptr->ppid = ppid;
-    ptr->parent = NULL;
+    ptr->parent = parent;
     ptr->numChildren = 0;
     ptr->capacity = 8;
     ptr->children = (processNode **) malloc(sizeof(processNode *) * ptr->capacity);
@@ -20,12 +20,30 @@ void make_tree(processNode *ptr, processNode *pcr, int sz) {
     if (ptr == NULL) return;
     for (int i = 0; i < sz; ++i) {
         if (pcr[i].ppid == ptr->pid) {
-            ptr->children[ptr->numChildren++] = &pcr[i];
+            processNode *pcs = malloc(sizeof(processNode));
+            init_process_node(pcs, pcr[i].name, pcr[i].pid, pcr[i].ppid, ptr);
+            ptr->children[ptr->numChildren++] = pcs;
         }
     }
     for (int i = 0; i < ptr->numChildren; ++i) {
         make_tree(ptr->children[i], pcr, sz);
     }
+}
+
+void destroy_process_node(processNode *node) {
+    if (node == NULL) return;
+    // free all the node cursively.
+    free(node->name);
+    for (int i = 0; i < node->numChildren; ++i) {
+        destroy_process_node(node->children[i]);
+    }
+    free(node->children);
+    free(node);
+}
+
+void destroy_process_tree(processTree *tree) {
+    destroy_process_node(tree->head);
+    tree->head = NULL;
 }
 
 /**
@@ -59,7 +77,7 @@ int init_tree(processTree *init) {
             strcat(destination, "/comm");
 
             read_files(destination, content);
-            init_process_node(&processes[numProcesses], content, pid, ppid);
+            init_process_node(&processes[numProcesses], content, pid, ppid, NULL);
             numProcesses++;
         }
     }
@@ -68,7 +86,7 @@ int init_tree(processTree *init) {
 
     for (int i = 0; i < numProcesses; ++i) {
         if (processes[i].ppid == 0) {
-            init_process_node(init->head, processes[i].name, processes[i].pid, processes[i].ppid);
+            init_process_node(init->head, processes[i].name, processes[i].pid, processes[i].ppid, NULL);
         }
     }
     assert(init->head != NULL);

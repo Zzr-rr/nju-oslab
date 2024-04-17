@@ -17,10 +17,11 @@ void print_help() {
 }
 
 void print_tree(processNode *ptr) {
-    if (ptr == NULL) return;
+    if (ptr->numChildren == 0) {
+        printf("\n");
+        return;
+    }
     printf("pid: %d ", ptr->pid);
-    printf("ppid: %d ", ptr->ppid);
-    printf("name: %s ", ptr->name);
     for (int i = 0; i < ptr->numChildren; ++i) {
         print_tree(ptr->children[i]);
     }

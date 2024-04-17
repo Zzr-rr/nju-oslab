@@ -28,8 +28,6 @@ int main(int argc, char *argv[]) {
         return EXIT_SUCCESS;
     }
 
-    // Process pcs[1024];
-    setbuf(stdout, NULL);
 
     processTree *pcs = malloc(sizeof(processTree));
     if (pcs == NULL) { // None
@@ -39,5 +37,7 @@ int main(int argc, char *argv[]) {
     init_process_tree(pcs);
     init_tree(pcs);
     print_tree(pcs->head);
+
+    destroy_process_tree(pcs);
     return EXIT_SUCCESS;
 }
