@@ -5,12 +5,6 @@
 #include "include/output.h"
 #include "include/processtree.h"
 
-typedef struct {
-    int PID;
-    int parentPID;
-    char name[40];
-} Process;
-
 int main(int argc, char *argv[]) {
     int help = 0, version = 0;
     for (int i = 0; i < argc; i++) {
@@ -37,7 +31,7 @@ int main(int argc, char *argv[]) {
     init_process_tree(pcs);
     init_tree(pcs);
     print_tree(pcs->head);
-
     destroy_process_tree(pcs);
+    free(pcs);
     return EXIT_SUCCESS;
 }

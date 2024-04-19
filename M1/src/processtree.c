@@ -46,6 +46,14 @@ void destroy_process_tree(processTree *tree) {
     tree->head = NULL;
 }
 
+void destroy_processes(processNode *ptr, int numProcess) {
+    assert(ptr != NULL);
+    for (int i = 0; i < numProcess; ++i) {
+        free(ptr[i].name);
+        free(ptr[i].children);
+    }
+}
+
 /**
  * The method will build the process tree by the following steps:
  * <br>1. Scan the dir and store the basic information of the process in the array. </br>
@@ -92,6 +100,7 @@ int init_tree(processTree *init) {
     assert(init->head != NULL);
     assert(init->head->children != NULL);
     make_tree(init->head, processes, numProcesses);
+    destroy_processes(processes, numProcesses);
     // get the tree.
     return EXIT_SUCCESS;
 }
