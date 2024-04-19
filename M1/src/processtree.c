@@ -1,4 +1,5 @@
 #include "../include/processtree.h"
+#define READ_FAILURE 2
 
 void init_process_node(processNode *ptr, const char *name, int pid, int ppid, processNode *parent) {
     assert(ptr != NULL);
@@ -69,7 +70,7 @@ int init_tree(processTree *init) {
     proc_dir = opendir("/proc");
     if (proc_dir == NULL) {
         perror("Failed to open /proc directory");
-        return EXIT_FAILURE;
+        return READ_FAILURE;
     }
     while ((entry = readdir(proc_dir)) != NULL) {
         if (is_numeric(entry->d_name)) {
