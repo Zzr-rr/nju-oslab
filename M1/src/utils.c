@@ -37,6 +37,11 @@ void read_files(const char *filepath, char *content) {
         content[pointer++] = ch;
     }
     content[pointer] = '\0';
+
+    if (pointer > 0 && content[pointer - 1] == '\n') {
+        content[pointer - 1] = '\0';
+    }
+
     fclose(file);
 }
 

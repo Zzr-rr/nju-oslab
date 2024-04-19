@@ -12,6 +12,8 @@ void print_version();
 
 void print_help();
 
-void print_tree(processNode *ptr);
+void print_tree(processNode *ptr, int depth);
+
+void print_tree_with_name(processNode *ptr, int depth);
 
 #endif //OUTPUT_H

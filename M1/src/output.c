@@ -16,13 +16,18 @@ void print_help() {
     printf(" -p, --show-pids\tshow PIDs; implies -c\n");
 }
 
-void print_tree(processNode *ptr) {
-    if (ptr->numChildren == 0) {
-        printf("\n");
-        return;
-    }
-    printf("pid: %d ", ptr->pid);
+void print_tree(processNode *ptr, int depth) {
+    for (int j = 0; j < depth; ++j) printf("|--------");
+    printf("+-pid: %d (%d)\n", ptr->pid, ptr->ppid);
     for (int i = 0; i < ptr->numChildren; ++i) {
-        print_tree(ptr->children[i]);
+        print_tree(ptr->children[i], depth + 1);
+    }
+}
+
+void print_tree_with_name(processNode *ptr, int depth) {
+    for (int j = 0; j < depth; ++j) printf("|--------");
+    printf("+-%s\n", ptr->name);
+    for (int i = 0; i < ptr->numChildren; ++i) {
+        print_tree_with_name(ptr->children[i], depth + 1);
     }
 }
