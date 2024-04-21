@@ -1,0 +1,55 @@
+make[1]: Entering directory 'hello'
+# Building hello-image [x86_64-qemu]
+mkdir -p hello/build/x86_64-qemu/ && echo + CC hello.c
+x86_64-linux-gnu-gcc -std=gnu11 -O2 -MMD -Wall -Werror -Ihello/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -D__ISA__=\"x86_64\" -D__ISA_X86_64__ -D__ARCH__=x86_64-qemu -D__ARCH_X86_64_QEMU -D__PLATFORM__=qemu -D__PLATFORM_QEMU -DARCH_H=\"arch/x86_64-qemu.h\" -fno-asynchronous-unwind-tables -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE -m64 -fPIC -mno-sse -c -o hello/build/x86_64-qemu/hello.o hello/hello.c
+make -s -C abstract-machine/am archive
+make[2]: Entering directory 'abstract-machine/am'
+# Building am-archive [x86_64-qemu]
+mkdir -p abstract-machine/am/build/x86_64-qemu/src/x86/qemu/ && echo + AS src/x86/qemu/start64.S
+x86_64-linux-gnu-gcc -MMD -Iabstract-machine/am/src -Iabstract-machine/am/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -m64 -fPIC -c -o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/start64.o abstract-machine/am/src/x86/qemu/start64.S
+mkdir -p abstract-machine/am/build/x86_64-qemu/src/x86/qemu/ && echo + AS src/x86/qemu/trap64.S
+x86_64-linux-gnu-gcc -MMD -Iabstract-machine/am/src -Iabstract-machine/am/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -m64 -fPIC -c -o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/trap64.o abstract-machine/am/src/x86/qemu/trap64.S
+mkdir -p abstract-machine/am/build/x86_64-qemu/src/x86/qemu/ && echo + CC src/x86/qemu/trm.c
+x86_64-linux-gnu-gcc -std=gnu11 -O2 -MMD -Wall -Werror -Iabstract-machine/am/src -Iabstract-machine/am/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -D__ISA__=\"x86_64\" -D__ISA_X86_64__ -D__ARCH__=x86_64-qemu -D__ARCH_X86_64_QEMU -D__PLATFORM__=qemu -D__PLATFORM_QEMU -DARCH_H=\"arch/x86_64-qemu.h\" -fno-asynchronous-unwind-tables -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE -m64 -fPIC -mno-sse -c -o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/trm.o abstract-machine/am/src/x86/qemu/trm.c
+mkdir -p abstract-machine/am/build/x86_64-qemu/src/x86/qemu/ && echo + CC src/x86/qemu/cte.c
+x86_64-linux-gnu-gcc -std=gnu11 -O2 -MMD -Wall -Werror -Iabstract-machine/am/src -Iabstract-machine/am/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -D__ISA__=\"x86_64\" -D__ISA_X86_64__ -D__ARCH__=x86_64-qemu -D__ARCH_X86_64_QEMU -D__PLATFORM__=qemu -D__PLATFORM_QEMU -DARCH_H=\"arch/x86_64-qemu.h\" -fno-asynchronous-unwind-tables -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE -m64 -fPIC -mno-sse -c -o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/cte.o abstract-machine/am/src/x86/qemu/cte.c
+mkdir -p abstract-machine/am/build/x86_64-qemu/src/x86/qemu/ && echo + CC src/x86/qemu/ioe.c
+x86_64-linux-gnu-gcc -std=gnu11 -O2 -MMD -Wall -Werror -Iabstract-machine/am/src -Iabstract-machine/am/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -D__ISA__=\"x86_64\" -D__ISA_X86_64__ -D__ARCH__=x86_64-qemu -D__ARCH_X86_64_QEMU -D__PLATFORM__=qemu -D__PLATFORM_QEMU -DARCH_H=\"arch/x86_64-qemu.h\" -fno-asynchronous-unwind-tables -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE -m64 -fPIC -mno-sse -c -o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/ioe.o abstract-machine/am/src/x86/qemu/ioe.c
+mkdir -p abstract-machine/am/build/x86_64-qemu/src/x86/qemu/ && echo + CC src/x86/qemu/vme.c
+x86_64-linux-gnu-gcc -std=gnu11 -O2 -MMD -Wall -Werror -Iabstract-machine/am/src -Iabstract-machine/am/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -D__ISA__=\"x86_64\" -D__ISA_X86_64__ -D__ARCH__=x86_64-qemu -D__ARCH_X86_64_QEMU -D__PLATFORM__=qemu -D__PLATFORM_QEMU -DARCH_H=\"arch/x86_64-qemu.h\" -fno-asynchronous-unwind-tables -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE -m64 -fPIC -mno-sse -c -o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/vme.o abstract-machine/am/src/x86/qemu/vme.c
+mkdir -p abstract-machine/am/build/x86_64-qemu/src/x86/qemu/ && echo + CC src/x86/qemu/mpe.c
+x86_64-linux-gnu-gcc -std=gnu11 -O2 -MMD -Wall -Werror -Iabstract-machine/am/src -Iabstract-machine/am/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -D__ISA__=\"x86_64\" -D__ISA_X86_64__ -D__ARCH__=x86_64-qemu -D__ARCH_X86_64_QEMU -D__PLATFORM__=qemu -D__PLATFORM_QEMU -DARCH_H=\"arch/x86_64-qemu.h\" -fno-asynchronous-unwind-tables -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE -m64 -fPIC -mno-sse -c -o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/mpe.o abstract-machine/am/src/x86/qemu/mpe.c
+echo + AR "->" build/am-x86_64-qemu.a
+ar rcs abstract-machine/am/build/am-x86_64-qemu.a abstract-machine/am/build/x86_64-qemu/src/x86/qemu/start64.o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/trap64.o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/trm.o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/cte.o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/ioe.o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/vme.o abstract-machine/am/build/x86_64-qemu/src/x86/qemu/mpe.o
+make[2]: Leaving directory 'abstract-machine/am'
+make -s -C abstract-machine/klib archive
+make[2]: Entering directory 'abstract-machine/klib'
+# Building klib-archive [x86_64-qemu]
+mkdir -p abstract-machine/klib/build/x86_64-qemu/src/ && echo + CC src/int64.c
+x86_64-linux-gnu-gcc -std=gnu11 -O2 -MMD -Wall -Werror -Iabstract-machine/klib/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -D__ISA__=\"x86_64\" -D__ISA_X86_64__ -D__ARCH__=x86_64-qemu -D__ARCH_X86_64_QEMU -D__PLATFORM__=qemu -D__PLATFORM_QEMU -DARCH_H=\"arch/x86_64-qemu.h\" -fno-asynchronous-unwind-tables -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE -m64 -fPIC -mno-sse -c -o abstract-machine/klib/build/x86_64-qemu/src/int64.o abstract-machine/klib/src/int64.c
+mkdir -p abstract-machine/klib/build/x86_64-qemu/src/ && echo + CC src/string.c
+x86_64-linux-gnu-gcc -std=gnu11 -O2 -MMD -Wall -Werror -Iabstract-machine/klib/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -D__ISA__=\"x86_64\" -D__ISA_X86_64__ -D__ARCH__=x86_64-qemu -D__ARCH_X86_64_QEMU -D__PLATFORM__=qemu -D__PLATFORM_QEMU -DARCH_H=\"arch/x86_64-qemu.h\" -fno-asynchronous-unwind-tables -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE -m64 -fPIC -mno-sse -c -o abstract-machine/klib/build/x86_64-qemu/src/string.o abstract-machine/klib/src/string.c
+mkdir -p abstract-machine/klib/build/x86_64-qemu/src/ && echo + CC src/stdio.c
+x86_64-linux-gnu-gcc -std=gnu11 -O2 -MMD -Wall -Werror -Iabstract-machine/klib/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -D__ISA__=\"x86_64\" -D__ISA_X86_64__ -D__ARCH__=x86_64-qemu -D__ARCH_X86_64_QEMU -D__PLATFORM__=qemu -D__PLATFORM_QEMU -DARCH_H=\"arch/x86_64-qemu.h\" -fno-asynchronous-unwind-tables -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE -m64 -fPIC -mno-sse -c -o abstract-machine/klib/build/x86_64-qemu/src/stdio.o abstract-machine/klib/src/stdio.c
+mkdir -p abstract-machine/klib/build/x86_64-qemu/src/ && echo + CC src/stdlib.c
+x86_64-linux-gnu-gcc -std=gnu11 -O2 -MMD -Wall -Werror -Iabstract-machine/klib/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -D__ISA__=\"x86_64\" -D__ISA_X86_64__ -D__ARCH__=x86_64-qemu -D__ARCH_X86_64_QEMU -D__PLATFORM__=qemu -D__PLATFORM_QEMU -DARCH_H=\"arch/x86_64-qemu.h\" -fno-asynchronous-unwind-tables -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE -m64 -fPIC -mno-sse -c -o abstract-machine/klib/build/x86_64-qemu/src/stdlib.o abstract-machine/klib/src/stdlib.c
+mkdir -p abstract-machine/klib/build/x86_64-qemu/src/ && echo + CC src/cpp.c
+x86_64-linux-gnu-gcc -std=gnu11 -O2 -MMD -Wall -Werror -Iabstract-machine/klib/include -Iabstract-machine/am/include/ -Iabstract-machine/klib/include/ -D__ISA__=\"x86_64\" -D__ISA_X86_64__ -D__ARCH__=x86_64-qemu -D__ARCH_X86_64_QEMU -D__PLATFORM__=qemu -D__PLATFORM_QEMU -DARCH_H=\"arch/x86_64-qemu.h\" -fno-asynchronous-unwind-tables -fno-builtin -fno-stack-protector -Wno-main -U_FORTIFY_SOURCE -m64 -fPIC -mno-sse -c -o abstract-machine/klib/build/x86_64-qemu/src/cpp.o abstract-machine/klib/src/cpp.c
+echo + AR "->" build/klib-x86_64-qemu.a
+ar rcs abstract-machine/klib/build/klib-x86_64-qemu.a abstract-machine/klib/build/x86_64-qemu/src/int64.o abstract-machine/klib/build/x86_64-qemu/src/string.o abstract-machine/klib/build/x86_64-qemu/src/stdio.o abstract-machine/klib/build/x86_64-qemu/src/stdlib.o abstract-machine/klib/build/x86_64-qemu/src/cpp.o
+make[2]: Leaving directory 'abstract-machine/klib'
+echo + LD "->" build/hello-x86_64-qemu.elf
+x86_64-linux-gnu-ld -melf_x86_64 -N -Ttext-segment=0x00100000 -o hello/build/hello-x86_64-qemu.elf --start-group hello/build/x86_64-qemu/hello.o abstract-machine/am/build/am-x86_64-qemu.a abstract-machine/klib/build/klib-x86_64-qemu.a --end-group
+echo \# Creating image [x86_64-qemu]
+make -s -C abstract-machine/am/src/x86/qemu/boot
+make[2]: Entering directory 'abstract-machine/am/src/x86/qemu/boot'
+echo + CC start.S main.c
+x86_64-linux-gnu-gcc -static -m32 -fno-pic -Os -nostdlib -Ttext 0x7c00 -Iabstract-machine/am/src -o bootblock.o start.S main.c
+python3 genboot.py bootblock.o
+make[2]: Leaving directory 'abstract-machine/am/src/x86/qemu/boot'
+echo + CREATE "->" build/hello-x86_64-qemu
+(   cat abstract-machine/am/src/x86/qemu/boot/bootblock.o;
+    head -c 1024 /dev/zero;
+    cat hello/build/hello-x86_64-qemu.elf )
+> hello/build/hello-x86_64-qemu
+make[1]: Leaving directory 'hello'

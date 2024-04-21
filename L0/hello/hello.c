@@ -2,19 +2,10 @@
 // Created by zhuzr on 4/19/24.
 //
 #include <am.h>
+#include <klib.h>
 #include <stdarg.h>
 
-void print(const char *s, ...) {
-    va_list ap;
-    va_start(ap, s);
-    while (s) {
-        for (; *s; s ++) putch(*s);
-        s = va_arg(ap, const char *);
-    }
-    va_end(ap);
-}
-
 int main(const char *args) {
-    print("\"", args, "\"", " from " __ISA__ " program!\n", NULL);
+    putch('1');
     return 0;
 }
