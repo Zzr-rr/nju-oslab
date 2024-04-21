@@ -22,6 +22,8 @@ void print_key() {
     puts("Key pressed: ");
     puts(key_names[event.keycode]);
     puts("\n");
+
+    // Keyboard ESCAPE will interrupt the system.
     if(event.keycode == AM_KEY_ESCAPE){
         halt(1);
     }
@@ -49,7 +51,7 @@ void splash() {
   for (int x = 0; x * SIDE <= w; x ++) {
     for (int y = 0; y * SIDE <= h; y++) {
       if ((x & 1) ^ (y & 1)) {
-        draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, 0xffffff); // white
+        draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, 123); // white
       }
     }
   }
