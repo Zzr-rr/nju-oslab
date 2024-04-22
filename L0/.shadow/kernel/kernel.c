@@ -4,7 +4,7 @@
 #include <klib-macros.h>
 #include "img.h"
 
-#define SIDE 1
+#define SIDE 2
 
 static int w, h;  // Screen size
 
