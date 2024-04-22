@@ -58,7 +58,7 @@ void splash() {
     for (int x = 0; x * SIDE <= w; x ++) {
         for (int y = 0; y * SIDE <= h; y++) {
             if ((x & 1) ^ (y & 1)) {
-                draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, __0x3f_jpg[(int) (w_rate * x * w) + (int) (h_rate * y)]);     // white
+                draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, __0x3f_jpg[(int) (w_rate * x * w + h_rate * y)]);     // white
             }
         }
     }
