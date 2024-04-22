@@ -48,12 +48,11 @@ void splash() {
 
     w = info.width;
     h = info.height;
-    putch(w);
-    putch(h);
+
     for (int x = 0; x * SIDE <= w; x ++) {
         for (int y = 0; y * SIDE <= h; y++) {
             if ((x & 1) ^ (y & 1)) {
-                draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, x * 100 + y); // white
+                draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, 255); // white
             }
         }
     }
