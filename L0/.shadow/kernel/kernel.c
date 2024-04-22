@@ -2,7 +2,7 @@
 #include <amdev.h>
 #include <klib.h>
 #include <klib-macros.h>
-#include "img.h"
+#include "lao2.h"
 
 #define SIDE 2
 
@@ -53,7 +53,7 @@ void splash() {
     for (int x = 0; x * SIDE <= w; x ++) {
         for (int y = 0; y * SIDE <= h; y++) {
             if ((x & 1) ^ (y & 1)) {
-                draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, __0x3f_jpg[x * w + y]);     // white
+                draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, lao_ppm[x * w + y]);     // white
             }
         }
     }
