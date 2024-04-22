@@ -51,8 +51,8 @@ void splash() {
     h = info.height;
     // w - screen width
     // h - screen height
-    float w_rate = 556 / w / SIDE;
-    float h_rate = 556 / h / SIDE;
+    float w_rate = 556 / w;
+    float h_rate = 556 / h;
     for (int x = 0; x * SIDE <= w; x ++) {
         for (int y = 0; y * SIDE <= h; y++) {
             if ((x & 1) ^ (y & 1)) {
