@@ -56,7 +56,10 @@ void splash() {
 
     for (int x = 0; x * SIDE <= w; x ++) {
         for (int y = 0; y * SIDE <= h; y++) {
-            draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, __0x3f_jpg[(int) (w_rate * 556 * x)  + (int)(h_rate * y)]);     // white
+            int color_index = (int)(w_rate * x * 556) + (int)(h_rate * y * 556);
+            if (color_index < 556 * 556) { // assuming __0x3f_jpg has 556*556 elements
+                draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, __0x3f_jpg[color_index]);
+            }
         }
     }
 }
