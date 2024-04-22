@@ -51,12 +51,13 @@ void splash() {
     h = info.height;
     // w - screen width
     // h - screen height
-//    float w_rate = (float) (w / SIDE) / 556;
-//    float h_rate = (float) (h / SIDE) / 556;
+    int w_pixel = w / SIDE;
+    int h_pixel = h / SIDE;
+
     for (int x = 0; x * SIDE <= w; x ++) {
         for (int y = 0; y * SIDE <= h; y++) {
-            int color_index = (int)((x * 556)) + (int)(y);
-            if (color_index < 556 * 556) {   //  assuming __0x3f_jpg has 556*556 elements
+            int color_index = (int)((x * 556 * 556 / w_pixel)) + (int)(y * 556 / h_pixel);
+            if (color_index < 556 * 556) {   // assuming __0x3f_jpg has 556*556 elements
                 draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, __0x3f_jpg[color_index]);
             }
         }
