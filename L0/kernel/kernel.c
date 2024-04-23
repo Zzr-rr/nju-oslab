@@ -53,7 +53,7 @@ void splash() {
     // h - screen height
     int w_pixel = w / SIDE;
     int h_pixel = h / SIDE;
-    
+
     printf("w_pixel = %d\n", w_pixel);
     printf("h_pixel = %d\n", h_pixel);
 
