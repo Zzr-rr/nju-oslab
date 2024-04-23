@@ -60,7 +60,7 @@ void splash() {
         for (int y = 0; y * SIDE <= h; y++) {
             int mapping_x = (img_width / w_pixel) * x;
             int mapping_y = (img_height / h_pixel) * y;
-            printf("x = %d, y = %d", mapping_x, mapping_y);
+            printf("x = %d, y = %d\n", mapping_x, mapping_y);
             if (mapping_x * img_width + mapping_y <
                 img_width * img_height) {   // assuming __0x3f_jpg has 556*556 elements
                 draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, __0x3f_jpg[mapping_x * img_width + mapping_y]);
