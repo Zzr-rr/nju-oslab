@@ -53,12 +53,15 @@ void splash() {
     // h - screen height
     int w_pixel = w / SIDE;
     int h_pixel = h / SIDE;
+    printf("%d", w_pixel);
+    printf("%d", h_pixel);
 
     for (int x = 0; x * SIDE <= w; x++) {
         for (int y = 0; y * SIDE <= h; y++) {
             int mapping_x = (img_width / w_pixel) * x;
             int mapping_y = (img_height / h_pixel) * y;
-            if (mapping_x * img_width + mapping_y < img_width * img_height) {   // assuming __0x3f_jpg has 556*556 elements
+            if (mapping_x * img_width + mapping_y <
+                img_width * img_height) {   // assuming __0x3f_jpg has 556*556 elements
                 draw_tile(x * SIDE, y * SIDE, SIDE, SIDE, __0x3f_jpg[mapping_x * img_width + mapping_y]);
             }
         }
