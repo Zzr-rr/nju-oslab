@@ -5,4 +5,5 @@
  /home/zhuzr/projects/nju-os/nju-oslab/L0/kernel/../abstract-machine/am/include/amdev.h \
  /home/zhuzr/projects/nju-os/nju-oslab/L0/kernel/../abstract-machine/am/include/amdev.h \
  /home/zhuzr/projects/nju-os/nju-oslab/L0/kernel/../abstract-machine/klib/include/klib.h \
- /home/zhuzr/projects/nju-os/nju-oslab/L0/kernel/../abstract-machine/klib/include/klib-macros.h
+ /home/zhuzr/projects/nju-os/nju-oslab/L0/kernel/../abstract-machine/klib/include/klib-macros.h \
+ /home/zhuzr/projects/nju-os/nju-oslab/L0/kernel/img.h
